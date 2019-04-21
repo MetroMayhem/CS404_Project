@@ -1,5 +1,4 @@
-#include "pch.h"
-#include Edge.h
+#include "Edge.h"
 #include <string>
 
 
@@ -20,18 +19,18 @@ bool operator == (const Edge& other) {
 	}
 	
 int Edge::getZip1() {
-
+	return zipCode1;
 	}
 
 int Edge::getZip2() {
-
+	return zipCode2;
 	}
 
-double Edge::getWeight() {
-
+int Edge::getDistance() {
+	return distance;
 	}
 	
-string Edge::toString() {
+std::string Edge::toString() {
 
 	}
 

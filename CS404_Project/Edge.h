@@ -12,8 +12,8 @@ public:
 	bool operator==(const Edge& other);
 	int getZip1();
 	int getZip2();
-	double getWeight();
-	string toString();
+	int getDistance();
+	std::string toString();
 
 
 private:
