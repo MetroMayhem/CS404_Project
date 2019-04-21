@@ -71,4 +71,5 @@ private:
 
 ostream& operator<<(ostream& os, const Request& req) {
 	os << req.get_request_id() << " " << req.get_vehicle_type() << " " << req.get_zip() << " " << req.get_vehicle_id() << endl;
+	return os;
 }
