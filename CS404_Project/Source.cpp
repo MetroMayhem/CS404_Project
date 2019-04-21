@@ -24,5 +24,5 @@ int main() {
 	for (vector<EmergencyVehicles>::iterator iter = vehicles.begin(); iter < vehicles.end(); iter++) {
 		cout << iter->ID << " " << iter->Type << " " << iter->ZipCode << endl;
 	}
-
+	return 0;
 }
