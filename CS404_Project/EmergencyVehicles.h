@@ -1,7 +1,7 @@
 #pragma once
 
 struct EmergencyVehicles {
-	const int ID;
-	const int Type;
+	int ID;
+	int Type;
 	int ZipCode;
 };
