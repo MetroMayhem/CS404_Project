@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Edge.h" />
     <ClInclude Include="EmergencyVehicles.h" />
+    <ClInclude Include="Request.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Requests.txt" />
