@@ -14,9 +14,11 @@ Edge::Edge() {
 
 }
 
-bool Edge::operator==(const Edge& other) {
-	this->getZip1();
+bool Edge::operator==(Edge& other) {
+	if (this->getZip1() == other.getZip1() && this->getZip2() == other.getZip2())
+		return true;
 
+	return false;
 	}
 	
 int Edge::getZip1() {
