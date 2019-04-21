@@ -2,27 +2,34 @@
 #include <fstream>
 #include <vector>
 #include "EmergencyVehicles.h"
+#include "Request.h"
 using namespace std;
 
 int main() {
 	ifstream vehiclesFile("Vehicles.txt");
 	vector<EmergencyVehicles> vehicles;
-	EmergencyVehicles temp;
+	EmergencyVehicles vtemp;
 	while (!vehiclesFile.eof()) {
+		vehiclesFile >> vtemp.ID;
+		vehiclesFile >> vtemp.Type;
+		vehiclesFile >> vtemp.ZipCode;
 		
-		//temp.ID = vehiclesFile.get();
-		//temp.Type = vehiclesFile.get();
-		//temp.ZipCode = vehiclesFile.get();
-		
-		vehiclesFile >> temp.ID;
-		vehiclesFile >> temp.Type;
-		vehiclesFile >> temp.ZipCode;
-		
-		vehicles.push_back(temp);
+		vehicles.push_back(vtemp);
 	}
 	vehiclesFile.close();
-	for (vector<EmergencyVehicles>::iterator iter = vehicles.begin(); iter < vehicles.end(); iter++) {
-		cout << iter->ID << " " << iter->Type << " " << iter->ZipCode << endl;
+	ifstream requestsFile("Requests.txt");
+	vector<Request> requests;
+	Request rtemp = Request(0, 0, 0, -1);
+	while (!requestsFile.eof()) {
+		rtemp = Request(requestsFile.get(), requestsFile.get(), requestsFile.get(), -1);
+		/*rtemp.set_request_id(requestsFile.get());
+		rtemp.set_vehicle_type(requestsFile.get());
+		rtemp.set_zip(requestsFile.get());
+		rtemp.set_
+		*/
+	}
+	for (vector<Request>::iterator iter = requests.begin(); iter < requests.end(); iter++) {
+		cout << *iter;
 	}
 	return 0;
 }
