@@ -9,7 +9,7 @@ public:
 	Edge(const Edge& other);
 	Edge();
 
-	bool operator==(const Edge& other);
+	bool operator==(Edge& other);
 	int getZip1();
 	int getZip2();
 	int getDistance();
