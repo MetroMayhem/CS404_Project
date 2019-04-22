@@ -21,6 +21,9 @@
     <ClCompile Include="Edge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="List_Graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EmergencyVehicles.h">
@@ -30,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Request.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="List_Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
