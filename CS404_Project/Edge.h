@@ -5,7 +5,7 @@ class Edge {
 
 public:
 
-	Edge(int firstZip, int secondZip, double dist = 1.0);
+	Edge(int firstZip, int secondZip, int dist);
 	Edge(const Edge& other);
 	Edge();
 
@@ -21,7 +21,7 @@ private:
 
 	int zipCode1;
 	int zipCode2;
-	double distance;
+	int distance;
 
 
 };

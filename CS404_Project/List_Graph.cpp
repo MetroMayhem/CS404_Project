@@ -1,15 +1,14 @@
 #include "List_Graph.h"
-#include "Edge.h"
-#include <vector>
+
 
 
 List_Graph::List_Graph(int n , bool d)
 {
 }
 
-iterator List_Graph::begin(int zip1) const
+vector<list<Edge>>::iterator List_Graph::begin(int zip1)
 {
-	return iterator();
+	return edges.begin();
 }
 
 Edge List_Graph::get_edge(int zip1, int zip2) const

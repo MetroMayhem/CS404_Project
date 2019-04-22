@@ -2,16 +2,22 @@
 #include <string>
 
 
-Edge::Edge(int firstZip, int secondZip, double dist = 1.0) {
-
+Edge::Edge(int firstZip, int secondZip, int dist = 1) {
+	zipCode1 = firstZip;
+	zipCode2 = secondZip;
+	distance = dist;
 }
 
 Edge::Edge(const Edge& other) {
-
+	zipCode1 = other.zipCode1;
+	zipCode2 = other.zipCode2;
+	distance = other.distance;
 }
 
 Edge::Edge() {
-
+	zipCode1 = 0;
+	zipCode2 = 0;
+	distance = 0;
 }
 
 bool Edge::operator==(Edge& other) {
@@ -34,7 +40,7 @@ int Edge::getDistance() {
 	}
 	
 std::string Edge::toString() {
-
+	return " ";
 	}
 
 

@@ -1,14 +1,18 @@
+#include <vector>
+#include <iterator>
+#include <list>
+#include "Edge.h"
 #pragma once
 
 
-
+using namespace std;
 class List_Graph
 {
 
 public:
 	List_Graph(int n, bool d);
 
-	iterator begin(int zip1) const;
+	vector<list<Edge>>::iterator begin(int zip1);
 
 	Edge get_edge(int zip1, int zip2) const;
 
@@ -20,7 +24,7 @@ public:
 
 private:
 
-	std::vector<list<Edge>> edges;
+	vector<list<Edge>> edges;
 
 };
 
