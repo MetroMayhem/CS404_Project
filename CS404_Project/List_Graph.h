@@ -10,7 +10,7 @@ class List_Graph
 {
 
 public:
-	List_Graph(int n, bool d);
+	List_Graph(int n);
 
 	vector<list<Edge>>::iterator begin(int zip1);
 
