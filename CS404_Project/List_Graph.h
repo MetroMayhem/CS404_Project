@@ -14,7 +14,7 @@ public:
 
 	vector<list<Edge>>::iterator begin(int zip1);
 
-	Edge get_edge(int zip1, int zip2) const;
+	Edge get_edge(int zip1, int zip2);
 
 	void insert(Edge edge);
 

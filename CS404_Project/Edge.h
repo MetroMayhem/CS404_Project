@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 class Edge {
 
@@ -18,7 +19,7 @@ public:
 	void setZip2(int z2);
 	void setDistance(int d);
 
-	std::string toString();
+	friend std::ostream& operator<<(std::ostream& os, Edge& edge);
 
 
 private:
