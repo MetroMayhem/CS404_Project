@@ -134,6 +134,7 @@
     <ClInclude Include="Request.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Distances.txt" />
     <Text Include="Requests.txt" />
     <Text Include="Vehicles.txt" />
   </ItemGroup>
