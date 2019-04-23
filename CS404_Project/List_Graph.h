@@ -16,7 +16,7 @@ public:
 
 	Edge get_edge(int zip1, int zip2) const;
 
-	void insert(const Edge& edge);
+	void insert(Edge edge);
 
 	bool is_edge(int zip1, int zip2) const;
 
