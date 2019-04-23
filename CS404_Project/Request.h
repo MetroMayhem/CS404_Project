@@ -12,7 +12,7 @@ public:
 		vehicleID = 0;
 	}
 
-	Request(int rID, int zip, int vType, int vID = -1) {
+	Request(int rID, int vType, int zip, int vID = -1) {
 		requestID = rID;
 		zipCode = zip;
 		vehicleType = vType;
@@ -58,7 +58,7 @@ public:
 
 	//utility functions
 	bool is_completed() {	//a request is completed if it has been assigned a vehicle id
-		return (vehicleID != 0);
+		return (vehicleID != -1);
 	}
 
 	friend ostream& operator<<(ostream& os, const Request& req);
