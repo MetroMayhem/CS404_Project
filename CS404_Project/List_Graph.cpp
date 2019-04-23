@@ -10,14 +10,15 @@ List_Graph::List_Graph(int n)
 {
 
 	ifstream distanceFile("Distances.txt");
-	vector<Edge> edges;
+	vector<list<Edge>> edges;
 	Edge edgeTemp;
+	list<Edge> temp(n, edgeTemp);
 	while (!distanceFile.eof()) {
 		edgeTemp.setZip1(distanceFile.get());
 		edgeTemp.setZip2(distanceFile.get());
 		edgeTemp.setDistance(distanceFile.get());
 
-		edges.push_back(edgeTemp);
+		edges.push_back(temp);
 	}
 	distanceFile.close();
 
@@ -36,6 +37,7 @@ Edge List_Graph::get_edge(int zip1, int zip2)
 				return *listit;
 		}
 	}
+	return Edge();
 }
 
 void List_Graph::insert(Edge edge)
