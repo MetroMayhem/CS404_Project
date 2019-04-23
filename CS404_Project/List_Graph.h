@@ -22,7 +22,7 @@ public:
 
 	~List_Graph();
 
-private:
+//private:
 
 	vector<list<Edge>> edges;
 

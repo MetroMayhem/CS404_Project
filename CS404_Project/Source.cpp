@@ -4,6 +4,7 @@
 #include "EmergencyVehicles.h"
 #include "Request.h"
 #include "Edge.h"
+#include "List_Graph.h"
 using namespace std;
 
 int main() {
@@ -36,12 +37,13 @@ int main() {
 	}
 
 	
-	for (vector<Request>::iterator iter = requests.begin(); iter < requests.end(); iter++) {
-		cout << *iter;
-	}
-
 	
 
+	List_Graph graph(10);
+
+	for (vector<list<Edge>>::iterator iter = graph.edges.begin(); iter < graph.edges.end(); iter++) {
+		cout << iter->front();
+	}
 
 	return 0;
 }

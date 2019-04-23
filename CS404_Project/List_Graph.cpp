@@ -10,15 +10,19 @@ List_Graph::List_Graph(int n)
 {
 
 	ifstream distanceFile("Distances.txt");
-	vector<list<Edge>> edges;
+	//vector<list<Edge>> edges;
 	Edge edgeTemp;
 	list<Edge> temp(n, edgeTemp);
+	int zip1; int zip2; int distance;
 	while (!distanceFile.eof()) {
-		edgeTemp.setZip1(distanceFile.get());
+		distanceFile >> zip1 >> zip2 >> distance;
+		edgeTemp = Edge(zip1, zip2, distance);
+		/*edgeTemp.setZip1(distanceFile.get());
 		edgeTemp.setZip2(distanceFile.get());
 		edgeTemp.setDistance(distanceFile.get());
-
-		edges.push_back(temp);
+		*/
+		temp.front() = edgeTemp;
+		this->edges.push_back(temp);
 	}
 	distanceFile.close();
 
