@@ -14,9 +14,9 @@ public:
 	int getZip2();
 	int getDistance();
 
-	int setZip1(int z1);
-	int setZip2(int z2);
-	int setDistance(int d);
+	void setZip1(int z1);
+	void setZip2(int z2);
+	void setDistance(int d);
 
 	std::string toString();
 
