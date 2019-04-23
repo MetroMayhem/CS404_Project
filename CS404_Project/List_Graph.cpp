@@ -28,9 +28,14 @@ vector<list<Edge>>::iterator List_Graph::begin(int zip1)
 	return edges.begin();
 }
 
-Edge List_Graph::get_edge(int zip1, int zip2) const
+Edge List_Graph::get_edge(int zip1, int zip2)
 {
-	return Edge();
+	for (vector<list<Edge>>::iterator it = edges.begin(); it != edges.end(); ++it) {
+		for (list<Edge>::iterator listit = it->begin(); listit != it->end(); listit++) {
+			if (listit->getZip1() == zip1 && listit->getZip2() == zip2)
+				return *listit;
+		}
+	}
 }
 
 void List_Graph::insert(const Edge& edge)

@@ -51,9 +51,10 @@ void Edge::setDistance(int d) {
 	distance = d;
 }
 
-std::string Edge::toString() {
-	return " ";
-	}
+std::ostream& operator<<(std::ostream& os, Edge& edge) {
+	os << edge.getZip1() << " " << edge.getZip2() << " " << edge.getDistance() << std::endl;
+	return os;
+}
 
 
 
