@@ -36,6 +36,7 @@ Edge List_Graph::get_edge(int zip1, int zip2)
 				return *listit;
 		}
 	}
+	return Edge();
 }
 
 void List_Graph::insert(Edge edge)
