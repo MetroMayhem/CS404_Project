@@ -3,6 +3,7 @@
 #include <vector>
 #include "EmergencyVehicles.h"
 #include "Request.h"
+#include "Edge.h"
 using namespace std;
 
 int main() {
@@ -31,5 +32,18 @@ int main() {
 	for (vector<Request>::iterator iter = requests.begin(); iter < requests.end(); iter++) {
 		cout << *iter;
 	}
+
+	ifstream distanceFile("Distances.txt");
+	vector<Edge> edges;
+	Edge edgeTemp;
+	while (!distanceFile.eof()) {
+		distanceFile >> edgeTemp.setZip1;
+		distanceFile >> edgeTemp.setZip2;
+		distanceFile >> edgeTemp.getDistance;
+
+		edges.push_back(edgeTemp);
+	}
+	distanceFile.close();
+
 	return 0;
 }

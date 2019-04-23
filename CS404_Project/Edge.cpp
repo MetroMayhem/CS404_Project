@@ -39,6 +39,18 @@ int Edge::getDistance() {
 	return distance;
 	}
 	
+
+int Edge::setZip1(int z1)
+{
+	zipCode1 = z1;
+}
+int Edge::setZip2(int z2) {
+	zipCode2 = z2;
+}
+int Edge::setDistance(int d) {
+	distance = d;
+}
+
 std::string Edge::toString() {
 	return " ";
 	}

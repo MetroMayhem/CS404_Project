@@ -13,6 +13,11 @@ public:
 	int getZip1();
 	int getZip2();
 	int getDistance();
+
+	int setZip1(int z1);
+	int setZip2(int z2);
+	int setDistance(int d);
+
 	std::string toString();
 
 
