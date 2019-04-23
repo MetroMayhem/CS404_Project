@@ -13,9 +13,9 @@ List_Graph::List_Graph(int n)
 	vector<Edge> edges;
 	Edge edgeTemp;
 	while (!distanceFile.eof()) {
-		distanceFile >> edgeTemp.setZip1;
-		distanceFile >> edgeTemp.setZip2;
-		distanceFile >> edgeTemp.getDistance;
+		edgeTemp.setZip1(distanceFile.get());
+		edgeTemp.setZip2(distanceFile.get());
+		edgeTemp.setDistance(distanceFile.get());
 
 		edges.push_back(edgeTemp);
 	}
