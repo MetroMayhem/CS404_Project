@@ -1,6 +1,7 @@
 #include <vector>
 #include <iterator>
 #include <list>
+#include <map>
 #include "Edge.h"
 #pragma once
 
@@ -20,10 +21,17 @@ public:
 
 	bool is_edge(int zip1, int zip2) const;
 
+	int minDistance(int dist[], bool sptSet[]);
+
+	void printSolution(int dist[], int n);
+
+	void dijkstras(int src);
+
 	~List_Graph();
 
 //private:
-
+	
+	map<int, int> indices;
 	vector<list<Edge>> edges;
 
 };
