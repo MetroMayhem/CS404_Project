@@ -17,6 +17,7 @@ public:
 	std::vector<RespondedStruct> tableOfResponded;
 
 
+	// This is probably unnecessary
 	Responded(){
 		RespondedStruct temp;
 		tableOfResponded.push_back(temp);
@@ -27,6 +28,8 @@ public:
 		tableOfResponded[0].distance = 0;
 
 	}
+
+	//Constructor
 	Responded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance) {
 		RespondedStruct temp;
 		temp.tableID = tableid;
@@ -37,6 +40,7 @@ public:
 		tableOfResponded.push_back(temp);
 	}
 
+	// Adds a new completed vehicle into responded
 	void AddResponded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance) {
 		RespondedStruct temp;
 		temp.tableID = tableid;
@@ -47,6 +51,7 @@ public:
 		tableOfResponded.push_back(temp);
 	}
 
+	// Prints all responded events
 	friend std::ostream& operator<<(std::ostream& os, Responded& responded) {
 		os << setw(10) << "Table ID" << "|"
 			<< setw(15) << "Vehicle Type" << "|"
