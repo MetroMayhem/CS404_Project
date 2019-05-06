@@ -137,7 +137,9 @@ void List_Graph::dijkstras(int src, int* &arr) {
 			if (!sptSet[indices[v->getZip2()]] && dist[u] != INT_MAX && dist[u] + v->getDistance() < dist[indices[v->getZip2()]])
 				dist[indices[v->getZip2()]] = dist[u] + v->getDistance();
 	}
-	arr = dist;
+	for (int i = 0; i < V; i++) {
+		arr[i] = dist[i];
+	}
 	// print the constructed distance array 
 	printSolution(dist, V);
 }

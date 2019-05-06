@@ -41,11 +41,16 @@ int main() {
 	//int h = graph.dijkstras(0);
 	//cout << h;
 	int* distances = new int[6];
+	map<int, int> costs;
 	for (vector<Request>::iterator iter = requests.begin(); iter != requests.end(); iter++) {
 		graph.dijkstras(graph.indices[iter->get_zip()], distances);
-		for (int i = 0; i < 6; i++)
-			cout << distances[i] << endl;
-
+		
+		for (int i = 0; i < 6; i++) {
+			for (map<int, int>::iterator miter = graph.indices.begin(); miter != graph.indices.end(); miter++) {
+				if (miter->second == i)
+					costs[i] = distances[miter->first];
+			}
+		}
 		int temp;
 		for (int i = 1; i < 6; i++) {
 			int j = i;
@@ -53,12 +58,10 @@ int main() {
 				temp = distances[j];
 				distances[j] = distances[j - 1];
 				distances[j - 1] = temp;
-				cout << distances[j];
 				j--;
 			}
 		}
-		for (int i = 0; i < 6; i++)
-			cout << distances[i];
+		
 
 	}
 	Responded responded(1, 3, 64012, 1, 1);
