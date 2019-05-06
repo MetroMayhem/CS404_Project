@@ -5,6 +5,7 @@
 #include "Request.h"
 #include "Edge.h"
 #include "List_Graph.h"
+#include "Responded.h"
 using namespace std;
 
 int main() {
@@ -60,6 +61,9 @@ int main() {
 			cout << distances[i];
 
 	}
+	Responded responded(1, 3, 64012, 1, 1);
+	responded.AddResponded(2, 4, 64080, 2, 5);
+	cout << responded;
 	
 	return 0;
 }
