@@ -53,19 +53,21 @@ public:
 
 	// Prints all responded events
 	friend std::ostream& operator<<(std::ostream& os, Responded& responded) {
-		os << setw(10) << "Table ID" << "|"
+		os << "================================================================\n"
+			<< setw(10) << "|| Table ID" << "|"
 			<< setw(15) << "Vehicle Type" << "|"
 			<< setw(10) << "Zip Code" << "|"
 			<< setw(12) << "Vehicle ID" << "|"
-			<< setw(10) << "Distance" << "|" << endl;
+			<< setw(10) << "Distance" << "||\n"
+			<< "================================================================\n";
 		for (int i = 0; i < responded.tableOfResponded.size(); i++) {
-			os 	<< setw(10) << responded.tableOfResponded[i].tableID <<  "|"
+			os << "||" << setw(9) << responded.tableOfResponded[i].tableID << "|"
 				<< setw(15) << responded.tableOfResponded[i].vehicleType << "|"
 				<< setw(10) << responded.tableOfResponded[i].zipCode << "|"
 				<< setw(12) << responded.tableOfResponded[i].vehicleID << "|"
-				<< setw(10) << responded.tableOfResponded[i].distance << "|"
-				<< endl;
+				<< setw(10) << responded.tableOfResponded[i].distance << "||\n";
 		}
+		os << "================================================================\n";
 		return os;
 	}
 
