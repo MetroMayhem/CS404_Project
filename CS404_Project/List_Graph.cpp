@@ -88,10 +88,10 @@ bool List_Graph::is_edge(int zip1, int zip2) const
 
 int List_Graph::minDistance(int dist[], bool sptSet[]){
 	int min = INT_MAX;
-	int min_index = 0;
+	int min_index;
 
 	for (int v = 0; v < V; v++)
-		if (sptSet[v] == false && false && dist[v] <= min) {
+		if (sptSet[v] == false && dist[v] <= min) {
 			min = dist[v];
 			min_index = v;
 		}
@@ -106,7 +106,7 @@ void List_Graph::printSolution(int dist[], int n)
 		printf("%d tt %d\n", i, dist[i]);
 }
 
-void List_Graph::dijkstras(int src) {
+int* List_Graph::dijkstras(int src) {
 	int dist[V];
 	bool sptSet[V];
 	
@@ -139,7 +139,8 @@ void List_Graph::dijkstras(int src) {
 	}
 
 	// print the constructed distance array 
-	printSolution(dist, V);
+	//printSolution(dist, V);
+	return dist;
 }
 
 
