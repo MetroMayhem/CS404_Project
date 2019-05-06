@@ -132,6 +132,7 @@
     <ClInclude Include="EmergencyVehicles.h" />
     <ClInclude Include="List_Graph.h" />
     <ClInclude Include="Request.h" />
+    <ClInclude Include="Responded.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Distances.txt" />

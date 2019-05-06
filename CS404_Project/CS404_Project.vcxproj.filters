@@ -38,6 +38,9 @@
     <ClInclude Include="List_Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Responded.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Vehicles.txt">
