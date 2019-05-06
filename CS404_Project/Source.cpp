@@ -5,7 +5,6 @@
 #include "Request.h"
 #include "Edge.h"
 #include "List_Graph.h"
-#include "Responded.h"
 using namespace std;
 
 int main() {
@@ -38,20 +37,26 @@ int main() {
 	}
 
 	List_Graph graph(6);
-	graph.dijkstras(0);
+	for (vector<Request>::iterator iter = requests.begin(); iter != requests.end(); iter++) {
+		int* distances = graph.dijkstras(graph.indices[iter->get_zip()]);
+		for (int i = 0; i < 6; i++)
+			cout << distances + i;
 
+		int temp;
+		for (int i = 1; i < 6; i++) {
+			int j = i;
+			while (j > 0 && distances[j] < distances[j - 1]) {
+				temp = distances[j];
+				distances[j] = distances[j - 1];
+				distances[j - 1] = temp;
+				j--;
+			}
+		}
+		for (int i = 0; i < 6; i++)
+			cout << distances[i];
 
-
-	/*for (vector<list<Edge>>::iterator iter = graph.edges.begin(); iter < graph.edges.end(); iter++) {
-		for (list<Edge>::iterator lstIter = iter->begin(); lstIter != iter->end(); lstIter++)
-			cout << *lstIter;
 	}
-	*/
-
-	Responded responded(0, 1, 64012, 6, 5);
-	responded.AddResponded(01, 1, 64080, 14, 12);
-
-	cout << responded;
 
 	return 0;
 }
+	
