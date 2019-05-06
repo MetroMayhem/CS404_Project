@@ -39,6 +39,8 @@ int main() {
 	List_Graph graph(6);
 	graph.dijkstras(0);
 
+
+
 	/*for (vector<list<Edge>>::iterator iter = graph.edges.begin(); iter < graph.edges.end(); iter++) {
 		for (list<Edge>::iterator lstIter = iter->begin(); lstIter != iter->end(); lstIter++)
 			cout << *lstIter;

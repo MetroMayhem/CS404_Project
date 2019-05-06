@@ -91,7 +91,7 @@ int List_Graph::minDistance(int dist[], bool sptSet[]){
 	int min_index = 0;
 
 	for (int v = 0; v < V; v++)
-		if (sptSet[v] == false && false && dist[v] <= min) {
+		if (sptSet[v] == false && dist[v] <= min) {
 			min = dist[v];
 			min_index = v;
 		}
