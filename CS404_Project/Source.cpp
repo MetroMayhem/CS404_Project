@@ -37,7 +37,7 @@ int main() {
 		*/
 	}
 
-	/*List_Graph graph(6);
+	List_Graph graph(6);
 	for (vector<Request>::iterator iter = requests.begin(); iter != requests.end(); iter++) {
 		int* distances = graph.dijkstras(graph.indices[iter->get_zip()]);
 		for (int i = 0; i < 6; i++)
@@ -56,7 +56,7 @@ int main() {
 		for (int i = 0; i < 6; i++)
 			cout << distances[i];
 
-	}*/
+	}
 
 	Responded responded(1, 3, 64012, 1, 1);
 	responded.AddResponded(2, 4, 64080, 2, 5);
