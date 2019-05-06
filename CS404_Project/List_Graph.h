@@ -25,7 +25,7 @@ public:
 
 	void printSolution(int dist[], int n);
 
-	int* dijkstras(int src);
+	void dijkstras(int src, int* &arr);
 
 	~List_Graph();
 

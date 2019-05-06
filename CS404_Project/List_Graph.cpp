@@ -106,7 +106,7 @@ void List_Graph::printSolution(int dist[], int n)
 		printf("%d tt %d\n", i, dist[i]);
 }
 
-int* List_Graph::dijkstras(int src) {
+void List_Graph::dijkstras(int src, int* &arr) {
 	int dist[V];
 	bool sptSet[V];
 	
@@ -137,10 +137,9 @@ int* List_Graph::dijkstras(int src) {
 			if (!sptSet[indices[v->getZip2()]] && dist[u] != INT_MAX && dist[u] + v->getDistance() < dist[indices[v->getZip2()]])
 				dist[indices[v->getZip2()]] = dist[u] + v->getDistance();
 	}
-
+	arr = dist;
 	// print the constructed distance array 
-	//printSolution(dist, V);
-	return dist;
+	printSolution(dist, V);
 }
 
 

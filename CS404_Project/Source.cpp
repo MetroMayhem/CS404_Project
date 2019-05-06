@@ -37,10 +37,13 @@ int main() {
 	}
 
 	List_Graph graph(6);
+	//int h = graph.dijkstras(0);
+	//cout << h;
+	int* distances = new int[6];
 	for (vector<Request>::iterator iter = requests.begin(); iter != requests.end(); iter++) {
-		int* distances = graph.dijkstras(graph.indices[iter->get_zip()]);
+		graph.dijkstras(graph.indices[iter->get_zip()], distances);
 		for (int i = 0; i < 6; i++)
-			cout << distances + i;
+			cout << distances[i] << endl;
 
 		int temp;
 		for (int i = 1; i < 6; i++) {
@@ -49,6 +52,7 @@ int main() {
 				temp = distances[j];
 				distances[j] = distances[j - 1];
 				distances[j - 1] = temp;
+				cout << distances[j];
 				j--;
 			}
 		}
@@ -56,7 +60,7 @@ int main() {
 			cout << distances[i];
 
 	}
-
+	
 	return 0;
 }
 	
