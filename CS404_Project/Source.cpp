@@ -5,6 +5,7 @@
 #include "Request.h"
 #include "Edge.h"
 #include "List_Graph.h"
+#include "Responded.h"
 using namespace std;
 
 int main() {
@@ -46,6 +47,11 @@ int main() {
 			cout << *lstIter;
 	}
 	*/
+
+	Responded responded(0, 1, 64012, 6, 5);
+	responded.AddResponded(01, 1, 64080, 14, 12);
+
+	cout << responded;
 
 	return 0;
 }

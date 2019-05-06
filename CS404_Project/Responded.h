@@ -1,11 +1,11 @@
 #include <vector>
+#include <iostream>
+#include <iomanip>
 #pragma once
-
-using namespace std;
 
 class Responded
 {
-private:
+public:
 	struct RespondedStruct {
 		int tableID;
 		int vehicleType;
@@ -14,10 +14,54 @@ private:
 		int distance;
 	};
 
-	vector<RespondedStruct> tableOfResponded;
-
-public:
+	std::vector<RespondedStruct> tableOfResponded;
 
 
+	Responded(){
+		RespondedStruct temp;
+		tableOfResponded.push_back(temp);
+		tableOfResponded[0].tableID = 0;
+		tableOfResponded[0].vehicleType = 0;
+		tableOfResponded[0].zipCode = 0;
+		tableOfResponded[0].vehicleID = 0;
+		tableOfResponded[0].distance = 0;
+
+	}
+	Responded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance) {
+		RespondedStruct temp;
+		temp.tableID = tableid;
+		temp.vehicleType = vehicletype;
+		temp.zipCode = zipcode;
+		temp.vehicleID = vehicleid;
+		temp.distance = distance;
+		tableOfResponded.push_back(temp);
+	}
+
+	void AddResponded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance) {
+		RespondedStruct temp;
+		temp.tableID = tableid;
+		temp.vehicleType = vehicletype;
+		temp.zipCode = zipcode;
+		temp.vehicleID = vehicleid;
+		temp.distance = distance;
+		tableOfResponded.push_back(temp);
+	}
+
+	friend std::ostream& operator<<(std::ostream& os, Responded& responded) {
+		os << setw(10) << "Table ID" << "|"
+			<< setw(15) << "Vehicle Type" << "|"
+			<< setw(10) << "Zip Code" << "|"
+			<< setw(12) << "Vehicle ID" << "|"
+			<< setw(10) << "Distance" << "|" << endl;
+		for (int i = 0; i < responded.tableOfResponded.size(); i++) {
+			os 	<< setw(10) << responded.tableOfResponded[i].tableID <<  "|"
+				<< setw(15) << responded.tableOfResponded[i].vehicleType << "|"
+				<< setw(10) << responded.tableOfResponded[i].zipCode << "|"
+				<< setw(12) << responded.tableOfResponded[i].vehicleID << "|"
+				<< setw(10) << responded.tableOfResponded[i].distance << "|"
+				<< endl;
+		}
+		return os;
+	}
 
 };
