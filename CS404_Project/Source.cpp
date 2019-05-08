@@ -45,7 +45,7 @@ int main() {
 	//cout << h;
 	int* distances = new int[V];
 	//map<int, int> costs;
-	int minZip = -1, VID = -1, minCost = 0, tableID = 0;
+	int minZip = -1, VID = -1, minCost = INT_MAX;
 	Responded responded;
 	for (vector<Request>::iterator req = requests.begin(); req != requests.end(); req++) {
 		graph.dijkstras(graph.indices[req->get_zip()], distances);
@@ -56,19 +56,20 @@ int main() {
 					//costs[miter->first] = distances[i];
 
 					for (vector<EmergencyVehicles>::iterator cars = vehicles.begin(); cars != vehicles.end(); cars++) {
-						if (zip->first == cars->ZipCode && cars->ID == req->get_vehicle_id()) {
+						if (zip->first == cars->ZipCode && cars->Type == req->get_vehicle_type()) {
 							minCost = distances[i];
 							minZip = zip->first;
 							VID = cars->ID;
 						}
 					}
-					zip = graph.indices.end()--;
+					zip = graph.indices.end();
+					zip--;
 				}
 			}
 		}
 		
-		responded.AddResponded(tableID, req->get_vehicle_id(), minZip, VID, minCost);
-		tableID++;
+		responded.AddResponded(req->get_request_id(), req->get_vehicle_type(), minZip, VID, minCost);
+		minZip = -1, VID = -1, minCost = INT_MAX;
 		/*
 		int temp;
 		for (int i = 1; i < 6; i++) {

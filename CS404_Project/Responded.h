@@ -17,17 +17,7 @@ public:
 	std::vector<RespondedStruct> tableOfResponded;
 
 
-	// This is probably unnecessary
-	Responded(){
-		RespondedStruct temp;
-		tableOfResponded.push_back(temp);
-		tableOfResponded[0].tableID = 0;
-		tableOfResponded[0].vehicleType = 0;
-		tableOfResponded[0].zipCode = 0;
-		tableOfResponded[0].vehicleID = 0;
-		tableOfResponded[0].distance = 0;
-
-	}
+	Responded(){};
 
 	//Constructor
 	Responded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance) {

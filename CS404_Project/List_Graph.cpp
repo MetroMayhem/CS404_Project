@@ -141,7 +141,7 @@ void List_Graph::dijkstras(int src, int* &arr) {
 		arr[i] = dist[i];
 	}
 	// print the constructed distance array 
-	printSolution(dist, V);
+	//printSolution(dist, V);
 }
 
 
