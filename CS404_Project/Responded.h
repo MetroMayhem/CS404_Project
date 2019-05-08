@@ -12,6 +12,7 @@ public:
 		int zipCode;
 		int vehicleID;
 		int distance;
+		int requestZip;
 	};
 
 	std::vector<RespondedStruct> tableOfResponded;
@@ -20,44 +21,48 @@ public:
 	Responded(){};
 
 	//Constructor
-	Responded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance) {
+	Responded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance, int requestzip) {
 		RespondedStruct temp;
 		temp.tableID = tableid;
 		temp.vehicleType = vehicletype;
 		temp.zipCode = zipcode;
 		temp.vehicleID = vehicleid;
 		temp.distance = distance;
+		temp.requestZip = requestzip;
 		tableOfResponded.push_back(temp);
 	}
 
 	// Adds a new completed vehicle into responded
-	void AddResponded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance) {
+	void AddResponded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance, int requestzip) {
 		RespondedStruct temp;
 		temp.tableID = tableid;
 		temp.vehicleType = vehicletype;
 		temp.zipCode = zipcode;
 		temp.vehicleID = vehicleid;
 		temp.distance = distance;
+		temp.requestZip = requestzip;
 		tableOfResponded.push_back(temp);
 	}
 
 	// Prints all responded events
 	friend std::ostream& operator<<(std::ostream& os, Responded& responded) {
-		os << "===================================================================\n" << left
+		os << "==================================================================================\n" << left
 			<< setw(4) << "||" << right << "Request ID" << "|"
 			<< setw(15) << "Vehicle Type" << "|"
-			<< setw(10) << "Zip Code" << "|"
+			<< setw(12) << "Vehicle Zip" << "|"
 			<< setw(12) << "Vehicle ID" << "|"
-			<< setw(10) << "Distance" << "||\n"
-			<< "===================================================================\n";
+			<< setw(10) << "Distance" << "|"
+			<< setw(12) << "Request Zip" << "||\n"
+			<< "==================================================================================\n";
 		for (int i = 0; i < responded.tableOfResponded.size(); i++) {
 			os << "||" << setw(12) << responded.tableOfResponded[i].tableID << "|"
 				<< setw(15) << responded.tableOfResponded[i].vehicleType << "|"
 				<< setw(10) << responded.tableOfResponded[i].zipCode << "|"
 				<< setw(12) << responded.tableOfResponded[i].vehicleID << "|"
-				<< setw(10) << responded.tableOfResponded[i].distance << "||\n";
+				<< setw(10) << responded.tableOfResponded[i].distance << "|"
+				<< setw(14) << responded.tableOfResponded[i].requestZip << "||\n";
 		}
-		os << "===================================================================\n";
+		os << "==================================================================================\n";
 		return os;
 	}
 

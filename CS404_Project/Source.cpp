@@ -68,7 +68,7 @@ int main() {
 			}
 		}
 		
-		responded.AddResponded(req->get_request_id(), req->get_vehicle_type(), minZip, VID, minCost);
+		responded.AddResponded(req->get_request_id(), req->get_vehicle_type(), minZip, VID, minCost, req->get_zip());
 		vehicles[--VID].ZipCode = req->get_zip();
 		minZip = -1, VID = 0, minCost = INT_MAX;
 		/*
