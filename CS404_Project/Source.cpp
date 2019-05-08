@@ -6,6 +6,9 @@
 #include "Edge.h"
 #include "List_Graph.h"
 #include "Responded.h"
+
+#define V 6
+
 using namespace std;
 
 int main() {
@@ -37,20 +40,36 @@ int main() {
 		*/
 	}
 
-	List_Graph graph(6);
+	List_Graph graph(V);
 	//int h = graph.dijkstras(0);
 	//cout << h;
-	int* distances = new int[6];
-	map<int, int> costs;
-	for (vector<Request>::iterator iter = requests.begin(); iter != requests.end(); iter++) {
-		graph.dijkstras(graph.indices[iter->get_zip()], distances);
+	int* distances = new int[V];
+	//map<int, int> costs;
+	int minZip = -1, VID = -1, minCost = 0, tableID = 0;
+	Responded responded;
+	for (vector<Request>::iterator req = requests.begin(); req != requests.end(); req++) {
+		graph.dijkstras(graph.indices[req->get_zip()], distances);
 		
-		for (int i = 0; i < 6; i++) {
-			for (map<int, int>::iterator miter = graph.indices.begin(); miter != graph.indices.end(); miter++) {
-				if (miter->second == i)
-					costs[i] = distances[miter->first];
+		for (int i = 0; i < V; i++) {
+			for (map<int, int>::iterator zip = graph.indices.begin(); zip != graph.indices.end(); zip++) {
+				if (zip->second == i && distances[i] < minCost) {
+					//costs[miter->first] = distances[i];
+
+					for (vector<EmergencyVehicles>::iterator cars = vehicles.begin(); cars != vehicles.end(); cars++) {
+						if (zip->first == cars->ZipCode && cars->ID == req->get_vehicle_id()) {
+							minCost = distances[i];
+							minZip = zip->first;
+							VID = cars->ID;
+						}
+					}
+					zip = graph.indices.end()--;
+				}
 			}
 		}
+		
+		responded.AddResponded(tableID, req->get_vehicle_id(), minZip, VID, minCost);
+		tableID++;
+		/*
 		int temp;
 		for (int i = 1; i < 6; i++) {
 			int j = i;
@@ -60,12 +79,8 @@ int main() {
 				distances[j - 1] = temp;
 				j--;
 			}
-		}
-		
-
+		}*/
 	}
-	Responded responded(1, 3, 64012, 1, 1);
-	responded.AddResponded(2, 4, 64080, 2, 5);
 	cout << responded;
 	
 	return 0;
