@@ -17,7 +17,7 @@ public:
 	std::vector<RespondedStruct> tableOfResponded;
 
 
-	Responded() {};
+	Responded(){};
 
 	//Constructor
 	Responded(int tableid, int vehicletype, int zipcode, int vehicleid, int distance) {

@@ -64,7 +64,6 @@ int main() {
 					}
 					zip = graph.indices.end();
 					zip--;
-				
 				}
 			}
 		}
