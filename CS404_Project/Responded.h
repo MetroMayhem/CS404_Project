@@ -57,10 +57,10 @@ public:
 		for (int i = 0; i < responded.tableOfResponded.size(); i++) {
 			os << "||" << setw(12) << responded.tableOfResponded[i].tableID << "|"
 				<< setw(15) << responded.tableOfResponded[i].vehicleType << "|"
-				<< setw(10) << responded.tableOfResponded[i].zipCode << "|"
+				<< setw(12) << responded.tableOfResponded[i].zipCode << "|"
 				<< setw(12) << responded.tableOfResponded[i].vehicleID << "|"
 				<< setw(10) << responded.tableOfResponded[i].distance << "|"
-				<< setw(14) << responded.tableOfResponded[i].requestZip << "||\n";
+				<< setw(12) << responded.tableOfResponded[i].requestZip << "||\n";
 		}
 		os << "==================================================================================\n";
 		return os;
