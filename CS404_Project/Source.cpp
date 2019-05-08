@@ -12,6 +12,7 @@
 using namespace std;
 
 int main() {
+	//Reading in files
 	ifstream vehiclesFile("Vehicles.txt");
 	vector<EmergencyVehicles> vehicles;
 	EmergencyVehicles vtemp;
@@ -19,7 +20,6 @@ int main() {
 		vehiclesFile >> vtemp.ID;
 		vehiclesFile >> vtemp.Type;
 		vehiclesFile >> vtemp.ZipCode;
-		
 		vehicles.push_back(vtemp);
 	}
 	vehiclesFile.close();
@@ -28,33 +28,25 @@ int main() {
 	Request rtemp = Request(0, 0, 0, -1);
 	int requestID, zip, vehicleType;
 	while (!requestsFile.eof()) {
-		//rtemp = Request(requestsFile.get(), requestsFile.get(), requestsFile.get(), -1);
 		requestsFile >> requestID >> vehicleType >> zip;
 		rtemp = Request(requestID, vehicleType, zip);
 		requests.push_back(rtemp);
-		//cout << rtemp.get_request_id() << " " << rtemp.get_vehicle_type() << " " << rtemp.get_zip() << endl;
-		/*rtemp.set_request_id(requestsFile.get());
-		rtemp.set_vehicle_type(requestsFile.get());
-		rtemp.set_zip(requestsFile.get());
-		rtemp.set_
-		*/
 	}
+	requestsFile.close();
 
+	//Initializes graph of the data
 	List_Graph graph(V);
-	//int h = graph.dijkstras(0);
-	//cout << h;
 	int* distances = new int[V];
-	//map<int, int> costs;
 	int minZip = -1, VID = 0, minCost = INT_MAX;
 	Responded responded;
 	for (vector<Request>::iterator req = requests.begin(); req != requests.end(); req++) {
+		//For each request, find the shortest cost path to each node with Dijkstras Algorithm
 		graph.dijkstras(graph.indices[req->get_zip()], distances);
-		
 		for (int i = 0; i < V; i++) {
 			for (map<int, int>::iterator zip = graph.indices.begin(); zip != graph.indices.end(); zip++) {
+				//Iterates through the zipcode/index map to find which zip code matches
+				//to each cost
 				if (zip->second == i && distances[i] < minCost) {
-					//costs[miter->first] = distances[i];
-
 					for (vector<EmergencyVehicles>::iterator cars = vehicles.begin(); cars != vehicles.end(); cars++) {
 						if (zip->first == cars->ZipCode && cars->Type == req->get_vehicle_type()) {
 							minCost = distances[i];
@@ -71,20 +63,8 @@ int main() {
 		responded.AddResponded(req->get_request_id(), req->get_vehicle_type(), minZip, VID, minCost, req->get_zip());
 		vehicles[--VID].ZipCode = req->get_zip();
 		minZip = -1, VID = 0, minCost = INT_MAX;
-		/*
-		int temp;
-		for (int i = 1; i < 6; i++) {
-			int j = i;
-			while (j > 0 && distances[j] < distances[j - 1]) {
-				temp = distances[j];
-				distances[j] = distances[j - 1];
-				distances[j - 1] = temp;
-				j--;
-			}
-		}*/
 	}
 	cout << responded;
-	
 	return 0;
 }
 	

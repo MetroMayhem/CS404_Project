@@ -49,18 +49,18 @@ public:
 		os << "==================================================================================\n" << left
 			<< setw(4) << "||" << right << "Request ID" << "|"
 			<< setw(15) << "Vehicle Type" << "|"
-			<< setw(12) << "Vehicle Zip" << "|"
+			<< setw(12) << "Request Zip" << "|"
 			<< setw(12) << "Vehicle ID" << "|"
 			<< setw(10) << "Distance" << "|"
-			<< setw(12) << "Request Zip" << "||\n"
+			<< setw(12) << "Vehicle Zip" << "||\n"
 			<< "==================================================================================\n";
 		for (int i = 0; i < responded.tableOfResponded.size(); i++) {
 			os << "||" << setw(12) << responded.tableOfResponded[i].tableID << "|"
 				<< setw(15) << responded.tableOfResponded[i].vehicleType << "|"
-				<< setw(12) << responded.tableOfResponded[i].zipCode << "|"
+				<< setw(12) << responded.tableOfResponded[i].requestZip << "|"
 				<< setw(12) << responded.tableOfResponded[i].vehicleID << "|"
 				<< setw(10) << responded.tableOfResponded[i].distance << "|"
-				<< setw(12) << responded.tableOfResponded[i].requestZip << "||\n";
+				<< setw(12) << responded.tableOfResponded[i].zipCode << "||\n";
 		}
 		os << "==================================================================================\n";
 		return os;
