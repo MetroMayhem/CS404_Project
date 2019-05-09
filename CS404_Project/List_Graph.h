@@ -21,15 +21,12 @@ public:
 
 	int minDistance(int dist[], bool sptSet[]);
 
-	void printSolution(int dist[], int n);
-
 	void dijkstras(int src, int* &arr);
 
 	~List_Graph();
-
-//private:
 	
 	map<int, int> indices;
+
 	vector<list<Edge>> edges;
 
 };
