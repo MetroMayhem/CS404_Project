@@ -95,7 +95,7 @@ Responded HandleRequests(vector<Request> requests, map<int, vector<EmergencyVehi
 		for (int i = 0; i < V; i++) {
 			for (map<int, int>::iterator zip = graph.indices.begin(); zip != graph.indices.end(); zip++) {
 				//Iterates through the zipcode/index map to find which zip code matches
-				//to each cost, and if the indices match + that cost is less than the min
+				//to each cost, and if the indices match and that cost is less than the min
 				//See if the desired vehicle type is at that zip code
 				if (zip->second == i && distances[i] < minCost) {
 					//Iteratess through the emergency vehicles at the location from zip
@@ -106,10 +106,13 @@ Responded HandleRequests(vector<Request> requests, map<int, vector<EmergencyVehi
 							minZip = zip->first;
 							VID = vehicles[zip->first][car].ID;
 							minIdx = car;
-							car = vehicles[zip->first].size();
+							car = vehicles[zip->first].size();		//Stops iterations
 						}
 					}
+					zip = --graph.indices.end();		//Stops iterations
 				}
+				else if (zip->second == i)
+					zip = --graph.indices.end();
 			}
 		}
 		//Adds the chosen vehicle to the responded table, moves the vehicle to the request zip code
