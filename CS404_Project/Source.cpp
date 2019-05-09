@@ -112,7 +112,7 @@ Responded HandleRequests(vector<Request> requests, map<int, vector<EmergencyVehi
 					zip = --graph.indices.end();		//Stops iterations
 				}
 				else if (zip->second == i)
-					zip = --graph.indices.end();
+					zip = --graph.indices.end();		//Stops iterations
 			}
 		}
 		//Adds the chosen vehicle to the responded table, moves the vehicle to the request zip code
