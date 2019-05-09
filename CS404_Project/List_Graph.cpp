@@ -44,7 +44,7 @@ Edge List_Graph::get_edge(int zip1, int zip2)
 	return Edge();
 }
 
-void List_Graph::insert(Edge edge)
+void List_Graph::insert(Edge edge)	//Inserts a new edge into the graph O(n)
 {
 	int zip1 = edge.getZip1();
 	int zip2 = edge.getZip2();
@@ -101,7 +101,7 @@ int List_Graph::minDistance(int dist[], bool sptSet[]){
 	return min_index;
 }
 
-void List_Graph::dijkstras(int src, int* &arr) {		//Dijkstras Algorithm
+void List_Graph::dijkstras(int src, int* &arr) {		//Dijkstras Algorithm O(n^2)
 	int dist[V];
 	bool sptSet[V];
 	
