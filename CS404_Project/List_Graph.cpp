@@ -12,19 +12,12 @@ using namespace std;
 List_Graph::List_Graph(int n)
 {
 	ifstream distanceFile("Distances.txt");
-	//vector<list<Edge>> edges;
 	Edge edgeTemp;
 	list<Edge> temp(n, edgeTemp);
 	int zip1; int zip2; int distance;
 	while (!distanceFile.eof()) {
 		distanceFile >> zip1 >> zip2 >> distance;
 		edgeTemp = Edge(zip1, zip2, distance);
-		/*edgeTemp.setZip1(distanceFile.get());
-		edgeTemp.setZip2(distanceFile.get());
-		edgeTemp.setDistance(distanceFile.get());
-		*/
-		//temp.front() = edgeTemp;
-		//this->edges.push_back(temp);
 		insert(edgeTemp);
 	}
 	distanceFile.close();
@@ -36,7 +29,7 @@ vector<list<Edge>>::iterator List_Graph::begin(int zip1)
 	return edges.begin();
 }
 
-Edge List_Graph::get_edge(int zip1, int zip2)
+Edge List_Graph::get_edge(int zip1, int zip2)	//Gets the edge between to zipcodes if it exists
 {
 	for (vector<list<Edge>>::iterator it = edges.begin(); it != edges.end(); ++it) {
 		for (list<Edge>::iterator listit = it->begin(); listit != it->end(); listit++) {
@@ -54,8 +47,9 @@ void List_Graph::insert(Edge edge)
 	int distance = edge.getDistance();
 	bool found1 = 0; bool found2 = 0;
 
+	//Iterate through the list graph to try and find the zipcodes that are being inserted (both directions)
 	for (vector<list<Edge>>::iterator iter = edges.begin(); iter < edges.end(); iter++) {
-		if (iter->front().getZip1() == zip1) {
+		if (iter->front().getZip1() == zip1) {		//If found, push the new edge back in the list
 			iter->push_back(edge);
 			found1 = true;
 		}
@@ -63,12 +57,12 @@ void List_Graph::insert(Edge edge)
 			iter->push_back(Edge(zip2, zip1, distance));
 			found2 = true;
 		}
-		if (found1 && found2)
+		if (found1 && found2)		//If both are found stop searching
 			iter = edges.end()-1;
 	}
 	list<Edge> temp(1, edge);
 
-	if (!found1) {
+	if (!found1) {		//Add new instances of the zip code if it wasn't already found
 		edges.push_back(temp);
 		indices[edge.getZip1()] = edges.size() - 1;
 	}
@@ -81,12 +75,7 @@ void List_Graph::insert(Edge edge)
 	return;
 }
 
-bool List_Graph::is_edge(int zip1, int zip2) const
-{
-	return false;
-}
-
-int List_Graph::minDistance(int dist[], bool sptSet[]){
+int List_Graph::minDistance(int dist[], bool sptSet[]){		//Finds the minimum distance between unvisited nodes
 	int min = INT_MAX;
 	int min_index;
 
@@ -99,14 +88,7 @@ int List_Graph::minDistance(int dist[], bool sptSet[]){
 	return min_index;
 }
 
-void List_Graph::printSolution(int dist[], int n)
-{
-	printf("Vertex   Distance from Source\n");
-	for (int i = 0; i < V; i++)
-		printf("%d tt %d\n", i, dist[i]);
-}
-
-void List_Graph::dijkstras(int src, int* &arr) {
+void List_Graph::dijkstras(int src, int* &arr) {		//Dijkstras Algorithm
 	int dist[V];
 	bool sptSet[V];
 	
@@ -140,8 +122,6 @@ void List_Graph::dijkstras(int src, int* &arr) {
 	for (int i = 0; i < V; i++) {
 		arr[i] = dist[i];
 	}
-	// print the constructed distance array 
-	//printSolution(dist, V);
 }
 
 

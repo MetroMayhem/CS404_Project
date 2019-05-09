@@ -19,8 +19,6 @@ public:
 
 	void insert(Edge edge);
 
-	bool is_edge(int zip1, int zip2) const;
-
 	int minDistance(int dist[], bool sptSet[]);
 
 	void printSolution(int dist[], int n);
